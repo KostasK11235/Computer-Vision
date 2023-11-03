@@ -13,10 +13,6 @@ x_n = 0.2*sin(2*pi*f*t);
 frames = length(x_n);
 F(frames) = struct('cdata',[],'colormap',[]);
 
-% Remove black background color
-% mask = pudding > 0;
-% pudding = (ones(size(pudding)) - mask) + mask.*pudding;
-
 [m,n] = size(pudding);
 
 % Shear the image through a loop and add it to the final image
