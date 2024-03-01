@@ -1,15 +1,15 @@
 % Exersise 2 - Question 2 %
 
 % read image in grayscale
-ball = rgb2gray(imread('pudding.png'));
-[m,n] = size(ball);
+pudding = rgb2gray(imread('D:\MatLab_Files\Images\pudding.png'));
+[m,n] = size(pudding);
 
 % initializing parameters
 image = ones(2*m,2*n,1);
-scales = randi(100,1,1); % generate number of scales with max=100
+times = randi(100,1,1); % generate number of scales with max=100
 
 % for loop to scale image and place it to overall image
-for i=1:scales
+for i=1:times
     % random scales on axis x and y
     scalex = rand();
     scaley = rand();
@@ -19,7 +19,7 @@ for i=1:scales
     tform = affine2d(A);
 
     % apply scaling to image
-    [im_temp] = imwarp(ball, tform);
+    [im_temp] = imwarp(pudding, tform);
     im_temp = im2double(im_temp);
 
     % generate a valid (x,y) for image to fit

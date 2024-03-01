@@ -1,8 +1,9 @@
+close all;
 %% Exercise 2 - Question 7
 % Read all the necessary images
-beach = rgb2gray(imread('beach.jpg'));
-ball = rgb2gray(imread('ball.jpg'));
-ball_mask = rgb2gray(imread('ball_mask.jpg'));
+beach = rgb2gray(imread('D:\MatLab_Files\Images\beach.jpg'));
+ball = rgb2gray(imread('D:\MatLab_Files\Images\ball.jpg'));
+ball_mask = rgb2gray(imread('D:\MatLab_Files\Images\ball_mask.jpg'));
 
 ball_mask = imcomplement(ball_mask);
 ball = ball_mask - imcomplement(ball);
@@ -101,5 +102,5 @@ for i = 1:frames
     %% Update the structure
     F(i) = im2frame(temp,cmap);
 end
-save('transf_beach_a.mat','F');
+save('transf_beach.mat','F');
 implay(F);

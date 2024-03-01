@@ -1,8 +1,8 @@
 % Exercise 2 - Question 5
 % Read all the nessecery images
-windmill = im2double(rgb2gray(imread('windmill_back.jpeg')));
-blades = im2double(rgb2gray(imread('windmill.png')));
-blades_mask = im2double(rgb2gray(imread("windmill_mask.png")));
+windmill = im2double(rgb2gray(imread('D:\MatLab_Files\Images\windmill_back.jpeg')));
+blades = im2double(rgb2gray(imread('D:\MatLab_Files\Images\windmill.png')));
+blades_mask = im2double(rgb2gray(imread('D:\MatLab_Files\Images\windmill_mask.png')));
 
 % Number of frames
 frames = 240;
@@ -30,12 +30,12 @@ for i = 1:frames
     % Create the background
     image = windmill;
     % Create an affine2d tranformations that will rotate the blades
-    A = [cosd(theta) -sind(theta) 0;
-        sind(theta) cosd(theta) 0;
+    A = [-cosd(theta) -sind(theta) 0;
+        sind(theta) -cosd(theta) 0;
         0 0 1];
 
     tform = affine2d(A');
-    [im] = imwarp(blades,imref_temp,tform,'Interp','Cubic','FillValues',1);
+    [im] = imwarp(blades,imref_temp,tform,'Interp','Nearest','FillValues',1);
     [im_mask] = imwarp(blades_mask,imref_temp,tform,'Interp','Cubic',...
         'FillValues',1);
 
@@ -57,3 +57,4 @@ for i = 1:frames
 end
 
 implay(F,40)
+save('transf_windmill_nearest.mat','F');
